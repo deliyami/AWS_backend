@@ -28,13 +28,13 @@ export NVM_DIR="$HOME/.nvm"
 nvm install --lts
 
 # yarn install
-sudo npm install -g yarn
+npm install -g yarn
 
 # pm2 install
-sudo npm install -g pm2
+npm install -g pm2
 
 # nest install
-sudo npm install -g nest
+npm install -g nest
 
 # git install
 sudo apt-get update
@@ -51,7 +51,7 @@ sudo aws configure
 # Default output format [None]: json
 
 # codedeploy agent install
-wget https://aws-codedeploy-ap-northeast-2.s3.amazonaws.com/latest/install
+wget https://aws-codedeploy-ap-northeast-1.s3.amazonaws.com/latest/install
 chmod +x ./install
 
 sudo apt-get install ruby
@@ -62,7 +62,7 @@ sudo ./install auto
 sudo service codedeploy-agent status 
 
 # codedeploy-agent auto start when ec2 instance boot
-sudo vim /etc/init.d/codedeploy-startup.sh
+sudo vi /etc/init.d/codedeploy-startup.sh
 
 ```
 #!/bin
