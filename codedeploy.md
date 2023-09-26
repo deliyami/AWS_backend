@@ -1,3 +1,12 @@
+# use swap memory for npm install
+sudo dd if=/dev/zero of=/swapfile bs=1M count=1024
+sudo mkswap /swapfile
+sudo swapon /swapfile
+echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
+
+free -m
+
+# install node
 sudo apt-get update -y
 sudo apt-get install -y ca-certificates curl gnupg
 sudo mkdir -p /etc/apt/keyrings
@@ -11,18 +20,25 @@ node -v
 npm -v
 sudo apt-get install build-essential
 
-# nvm and yarn install
+# nvm install
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" 
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 nvm install --lts
-npm install -g yarn
+
+# yarn install
+sudo npm install -g yarn
+
+# pm2 install
+sudo npm install -g pm2
+
+# nest install
+sudo npm install -g nest
 
 # git install
 sudo apt-get update
 sudo apt-get install git
-
 
 # aws install
 sudo apt-get update
