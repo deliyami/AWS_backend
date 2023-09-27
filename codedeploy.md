@@ -59,7 +59,7 @@ sudo apt-get install ruby
 sudo ./install auto
 
 # check install & check servicing status codedeploy-agent
-sudo service codedeploy-agent status 
+sudo service codedeploy-agent status
 
 # codedeploy-agent auto start when ec2 instance boot
 sudo vi /etc/init.d/codedeploy-startup.sh
@@ -82,6 +82,8 @@ sudo systemctl enable mysql
 
 sudo /usr/bin/mysql -u root
 sudo mysql -u root
+
+use mysql;
 
 ALTER USER 'root'@'localhost' IDENTIFIED WITH 'mysql_native_password' BY 'password';
 FLUSH PRIVILEGES;
