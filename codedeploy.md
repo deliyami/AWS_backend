@@ -28,13 +28,13 @@ export NVM_DIR="$HOME/.nvm"
 nvm install --lts
 
 # yarn install
-npm install -g yarn
+sudo npm install -g yarn
 
 # pm2 install
-npm install -g pm2
+sudo npm install -g pm2
 
 # nest install
-npm install -g nest
+sudo npm install -g nest
 
 # git install
 sudo apt-get update
