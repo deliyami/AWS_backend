@@ -8,4 +8,5 @@ sudo yarn
 # sudo /usr/bin/yarn db:pull # when use prisma
 # sudo /usr/bin/yarn generate # when use prisma
 sudo mv .env dist/src/
-sudo /usr/bin/pm2 start dist/src/main.js
+cd dist/src
+sudo /usr/bin/pm2 start main.js
