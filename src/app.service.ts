@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { ResponseStatus, ImagePreview, UploadForm } from '@src/types/';
-import * as AWS from 'aws-sdk';
+import { S3, Credentials } from 'aws-sdk';
 import { Repository } from 'typeorm';
 import { Images } from '@src/entities/Images.entity';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -9,11 +9,11 @@ import { InjectRepository } from '@nestjs/typeorm';
 export class AppService {
   @InjectRepository(Images)
   private readonly imageEntityRepository: Repository<Images>;
-  private readonly awsS3: AWS.S3;
+  private readonly awsS3: S3;
   constructor() {
-    this.awsS3 = new AWS.S3();
+    this.awsS3 = new S3();
     this.awsS3.config.update({
-      credentials: new AWS.Credentials(
+      credentials: new Credentials(
         process.env.AWS_S3_ACCESS_KEY,
         process.env.AWS_S3_SECRET_KEY,
       ),

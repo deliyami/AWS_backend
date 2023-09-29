@@ -85,7 +85,23 @@ sudo mysql -u root
 
 use mysql;
 
+```
 ALTER USER 'root'@'localhost' IDENTIFIED WITH 'mysql_native_password' BY 'password';
 FLUSH PRIVILEGES;
+```
 
 CREATE DATABASE kirari;
+
+USE kirari;
+
+```
+CREATE TABLE images (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  title VARCHAR(255) UNIQUE NOT NULL,
+  url VARCHAR(255) NOT NULL,
+  previewUrl VARCHAR(255) NOT NULL,
+  author VARCHAR(255) UNIQUE NOT NULL,
+  createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+  updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+```
