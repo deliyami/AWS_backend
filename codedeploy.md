@@ -27,9 +27,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 nvm install --lts
 
-# yarn install
-sudo npm install -g yarn
-
 # pm2 install
 sudo npm install -g pm2
 
