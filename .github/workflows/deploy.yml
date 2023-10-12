@@ -30,6 +30,8 @@ jobs:
         run: |
           pwd
           touch .env
+          echo FRONTEND_HOST=${{ secrets.FRONTEND_HOST }} >> .env
+          echo FRONTEND_PORT=${{ secrets.FRONTEND_PORT }} >> .env
           echo DB_HOST=${{ secrets.DB_HOST }} >> .env
           echo DB_USER=${{ secrets.DB_USER }} >> .env
           echo DB_PASSWORD=${{ secrets.DB_PASSWORD }} >> .env
