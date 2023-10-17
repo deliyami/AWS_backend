@@ -24,19 +24,19 @@ export class AppService {
     return 'Hello Kirari!';
   }
   async uploadImage(
-    file: Express.Multer.File,
+    image: Express.Multer.File,
     body: UploadForm,
   ): Promise<ResponseStatus> {
-    const url = `original/${file.originalname}`;
-    const previewUrl = `preview/resized-${file.originalname}`;
+    const url = `original/${image.originalname}`;
+    const previewUrl = `preview/resized-${image.originalname}`;
     // s3 save
     await this.awsS3
       .putObject({
         Bucket: process.env.AWS_S3_BUCKET_NAME,
         Key: url,
-        Body: file.buffer,
+        Body: image.buffer,
         ACL: 'public-read',
-        ContentType: file.mimetype,
+        ContentType: image.mimetype,
       })
       .promise();
     // db save
@@ -64,11 +64,11 @@ export class AppService {
   }
   async updateImage(
     id: number,
-    file: Express.Multer.File,
+    image: Express.Multer.File,
     body: UploadForm,
   ): Promise<ResponseStatus> {
-    const url = `original/${file.originalname}`;
-    const previewUrl = `preview/resized-${file.originalname}`;
+    const url = `original/${image.originalname}`;
+    const previewUrl = `preview/resized-${image.originalname}`;
     const entity = await this.imageEntityRepository.findOneBy({ id });
     // s3 delete
     await this.awsS3
@@ -88,9 +88,9 @@ export class AppService {
       .putObject({
         Bucket: process.env.AWS_S3_BUCKET_NAME,
         Key: url,
-        Body: file.buffer,
+        Body: image.buffer,
         ACL: 'public-read',
-        ContentType: file.mimetype,
+        ContentType: image.mimetype,
       })
       .promise();
     // db save
