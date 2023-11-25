@@ -14,8 +14,8 @@ export class AppService {
     this.awsS3 = new S3();
     this.awsS3.config.update({
       credentials: new Credentials(
-        process.env.AWS_S3_ACCESS_KEY,
-        process.env.AWS_S3_SECRET_KEY,
+        process.env.AWS_ACCESS_KEY_ID,
+        process.env.AWS_SECRET_ACCESS_KEY,
       ),
       region: process.env.AWS_S3_REGION,
     });
